@@ -1,0 +1,25 @@
+<div id="page" class="createArticle">
+  <h1>Средство создания статьей</h1>
+
+  <input
+    id="inputComponent"
+    type="text"
+    [(ngModel)]="titleArticle"
+    placeholder="Имя статьи"
+  />
+  <input
+    id="inputComponent"
+    type="text"
+    [(ngModel)]="descriptionArticle"
+    placeholder="Описание статьи"
+  />
+
+  <input
+    id="inputComponent"
+    type="text"
+    [(ngModel)]="textArticle"
+    placeholder="ТЕКСТ"
+  />
+
+  <button id="buttonComponent" (click)="create()">Опубликовать</button>
+</div>

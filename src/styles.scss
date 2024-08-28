@@ -1,0 +1,47 @@
+//Global styles
+
+@mixin ah {
+    transition: 0.1s all;
+
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+    &:active{
+        background-color: rgb(57, 57, 57);
+        color: rgb(158, 158, 158);
+    }
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#buttonComponent{
+    width: 150px;
+    height: 40px;
+
+    border-radius: 50px;
+    border: none;
+
+    font-size: larger;
+
+    background-color: rgba(184, 184, 184, 0.542);
+
+    @include ah()
+}
+#inputComponent{
+    padding: 20px;
+
+    font-size: larger;
+    
+    border: none;
+    border-radius: 50px;
+
+    @include ah()
+}
+
+#page{
+    margin: 50px;
+}

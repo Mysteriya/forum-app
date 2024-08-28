@@ -1,0 +1,32 @@
+.block-load{
+    width: 200px;
+    height: 200px;
+
+    margin: 0 auto;
+    padding: 30px;
+    
+    .load{
+        width: 200px;
+        height: 200px;
+    
+        border-radius: 50%;
+        border: 5px dashed black;
+        animation-duration: 10s;
+        animation-name: load;
+    }
+    
+    h1{
+        position: relative;
+        top: 120px;
+        left: 35px;
+    }
+}
+
+@keyframes load {
+    from {
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

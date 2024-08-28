@@ -1,0 +1,57 @@
+<div class="fullPage-block" id="page">
+  <button id="buttonComponent" routerLink="/articles/">Назад</button>
+
+  <div class="body">
+    <h1>{{ item.title }}</h1>
+    <p>{{ item.text }}</p>
+  </div>
+
+  <div class="comments">
+    <div>
+      <input
+        type="text"
+        placeholder="Сообщение . . ."
+        [(ngModel)]="inputText"
+        id="inputComponent"
+      />
+      <button (click)="postComment()" id="buttonComponent">Отпраавить</button>
+    </div>
+    @if (isMount === true) { @if(item.comments?.length !== 0){ @for (elem of
+    item.comments; track elem.commentID) {
+    <div
+      class="comment"
+      [ngStyle]="{
+        background:
+          elem.userID === userInfo.userID
+            ? ['rgba(131, 131, 131, 100)']
+            : ['rgb(131, 131, 131, 0.337)']
+      }"
+    >
+      <div class="user">
+        <div>
+          <p class="name">{{ elem.name }}</p>
+          <p
+            class="id"
+            [ngStyle]="{
+              color:
+                elem.userID === userInfo.userID
+                  ? ['rgb(85, 85, 85)']
+                  : ['rgb(131, 131, 131, 0.337)']
+            }"
+          >
+            {{ elem.userID }}
+          </p>
+        </div>
+      </div>
+
+      <p class="text">{{ elem.text }}</p>
+    </div>
+    } }@else {
+    <div style="margin-top: 50px">
+      <h1>Комментариев пока что нету :,(</h1>
+    </div>
+    } }@else {
+    <load-component></load-component>
+    }
+  </div>
+</div>

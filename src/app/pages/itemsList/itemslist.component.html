@@ -1,0 +1,21 @@
+<div>
+  <header class="header">
+    <button id="buttonComponent">Категории</button>
+    <input id="inputComponent" type="text" placeholder="Поиск . . ." />
+  </header>
+
+  <div class="items">
+    @if(isMount){ @if(items !== []){ @for(item of items; track item.articleID){
+    <div class="item">
+      <a routerLink="/articles/{{ item.articleID }}"
+        ><h1>{{ item.title }}</h1></a
+      >
+      <p>{{ item.description }}</p>
+    </div>
+    } }@else if(items === []) {
+    <div><h1>В данный момент на эту тему нету поcтов.</h1></div>
+    } } @else {
+    <load-component></load-component>
+    }
+  </div>
+</div>
