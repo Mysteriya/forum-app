@@ -1,5 +1,5 @@
 export class ClassIsLoading {
-    async isLoading(data: any, isMount: boolean){
+    async isLoading(data: any){
         return {
             ...data,
             isMount: true

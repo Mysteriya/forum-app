@@ -20,8 +20,21 @@ export class ClassGetArticle extends ClassGetItems {
 export class ClassGetArticles extends ClassGetItems{
     async getArticles(){
         try {
-            return await axios.get(this.API_SERVICE)
+            return await axios.get(`${this.API_SERVICE}`)
         } catch (error) {
+            return []
+        }
+    }
+}
+
+export class ClassSearchArticles extends ClassGetItems{
+    async search(text: string){
+        const url = `https://65b499eb41db5efd2866a9d7.mockapi.io/forums?search=${text}`
+
+        try{
+            return await axios.get(url)
+
+        }   catch(error){
             return []
         }
     }

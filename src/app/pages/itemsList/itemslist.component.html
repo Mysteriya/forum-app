@@ -1,7 +1,13 @@
 <div>
   <header class="header">
     <button id="buttonComponent">Категории</button>
-    <input id="inputComponent" type="text" placeholder="Поиск . . ." />
+    <input
+      id="inputComponent"
+      type="text"
+      placeholder="Поиск . . ."
+      [(ngModel)]="searchInput"
+    />
+    <button id="buttonComponent" (click)="search()">Поиск</button>
   </header>
 
   <div class="items">

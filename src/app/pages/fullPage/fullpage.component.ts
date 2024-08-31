@@ -39,9 +39,7 @@ class FullPageComponent {
             {
                 comments: await new ClassGetComments().getComments(this.postID),
                 post: await new ClassGetArticle().getArticle(this.postID)
-            },
-
-            this.isMount
+            }
         )
 
         this.item = { ...post.data, comments: comments.data }
