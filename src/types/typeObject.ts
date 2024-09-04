@@ -31,6 +31,8 @@ export type TypePostArticles = {
     description: string;
     text: string;
 
+    category: string;
+
     date: string;
 
 

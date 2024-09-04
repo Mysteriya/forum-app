@@ -1,6 +1,25 @@
 <div>
   <header class="header">
-    <button id="buttonComponent">Категории</button>
+    <button id="buttonComponent" (click)="isOpenWindow = !isOpenWindow">
+      Категории
+    </button>
+
+    <modal-window [isOpen]="isOpenWindow">
+      @for(item of categories; track item.name){
+      <button
+        class="buttonCaregory"
+        style="background-color: {{
+          item.category === categoryActive
+            ? 'lightblue'
+            : 'rgba(0, 0, 0, 0.096)'
+        }};"
+        (click)="acceptCategory(item.category)"
+      >
+        {{ item.name }}
+      </button>
+      }
+    </modal-window>
+
     <input
       id="inputComponent"
       type="text"

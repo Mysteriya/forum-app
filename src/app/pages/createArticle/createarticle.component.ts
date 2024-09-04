@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms'
 
 import { ClassPostArticle } from "../../../service/postItems";
 
+import { categories } from "../../../service/var/categories";
+
 type TypeUserInfo = {
     name: string
     userID: string
@@ -17,11 +19,14 @@ export @Component({
 })
 
 class ClassCreateArticle {
+    categories = categories
+
     userInfo: TypeUserInfo = JSON.parse(window.localStorage.getItem('forumUser') || '{}')
 
     titleArticle!: string
     descriptionArticle!: string
     textArticle!: string
+    category: string = 'nothing'
 
     create(){
         new ClassPostArticle().postArticle({
@@ -31,8 +36,15 @@ class ClassCreateArticle {
             title: this.titleArticle,
             description: this.descriptionArticle,
             text: this.textArticle,
+
+            category: this.category,
         
             date: Date()
         })
+    }
+    abc(name:string){
+        this.category = name
+
+        console.log(this.category)
     }
 }

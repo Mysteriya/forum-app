@@ -20,6 +20,9 @@ header {
   height: 70px;
   background-color: rgba(219, 219, 219, 0.552);
 
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+
   input {
     margin-left: 20px;
     margin-right: 20px;
@@ -27,9 +30,38 @@ header {
     width: 500px;
     height: 0px;
   }
+
+  .buttonCaregory{
+    width: 160px;
+    height: 50px;
+
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+
+    border-radius: 50px;
+    border: none;
+
+    font-size: larger;
+
+    background-color: rgba(184, 184, 184, 0.542);
+
+
+    &:hover{
+      background-color: black;
+      color: white;
+    }
+    &:active{
+        background-color: rgb(57, 57, 57);
+        color: rgb(158, 158, 158);
+    }
+  }
 }
 
 .items {
+    padding: 5px;
+
+
   .item {
     background-color: rgb(88, 138, 255);
     font-family: "Courier New", Courier, monospace;
@@ -40,6 +72,8 @@ header {
     border-radius: 30px;
 
     overflow-wrap: break-word;
+
+
 
     h1 {
       text-decoration: underline;

@@ -39,6 +39,8 @@ export class ClassPostArticle extends ClassPostItems{
                 title: item.title,
                 description: item.description,
                 text: item.text,
+
+                category: item.category,
             
                 date: Date()
             })

@@ -1,11 +1,5 @@
-import axios from 'axios'
-import { ClassServiceItems } from './ServiceItems';
-
-export class ClassGetItems extends ClassServiceItems {
-    constructor(){
-        super();
-    }
-}
+import axios from "axios"
+import { ClassGetItems } from "./getItems"
 
 export class ClassGetArticle extends ClassGetItems {
     async getArticle(postID: string){
@@ -28,23 +22,15 @@ export class ClassGetArticles extends ClassGetItems{
 }
 
 export class ClassSearchArticles extends ClassGetItems{
-    async search(text: string){
-        const url = `https://65b499eb41db5efd2866a9d7.mockapi.io/forums?search=${text}`
+    async search(text: string, categoryActive: string){
+        const category = categoryActive !== '' ? `&category=${categoryActive}` : ''
+        
+        const url = `https://65b499eb41db5efd2866a9d7.mockapi.io/forums?search=${text}${category}`
 
         try{
             return await axios.get(url)
 
         }   catch(error){
-            return []
-        }
-    }
-}
-
-export class ClassGetComments extends ClassGetItems{
-    async getComments(postID: string){
-        try {
-            return await axios.get(`${this.API_SERVICE}/${postID}/comments/`)
-        } catch (error) {
             return []
         }
     }

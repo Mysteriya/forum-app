@@ -1,0 +1,25 @@
+.background{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    width: 100vw;
+    height: 100vh;
+
+    .window{
+        position: absolute;
+        top: 120px;
+        left: 400px;
+
+        
+        width: 500px;
+        height: 60%;
+
+        background-color: rgb(235, 239, 242);
+        padding: 20px;
+
+        border-radius: 20px;
+
+        box-shadow: -1px -1px 15px 1px rgba(0, 0, 0, 0.375);
+    }
+}
