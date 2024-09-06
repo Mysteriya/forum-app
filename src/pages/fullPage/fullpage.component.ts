@@ -3,12 +3,12 @@ import { FormsModule } from '@angular/forms'
 import { Router, RouterLink } from "@angular/router";
 import { NgStyle } from "@angular/common";
 
-import { IItemsProprtyes } from "../../../types/typeObject";
+import { IItemsProprtyes } from "../../types/typeObject";
 
-import { ClassIsLoading } from "../../../service/IsLoading";
-import { ClassPostComment } from "../../../service/postItems";
-import { ClassGetComments } from "../../../service/getitems/getItems";
-import { ClassGetArticle } from "../../../service/getitems/getArticle";
+import { ClassIsLoading } from "../../service/IsLoading";
+import { ClassPostComment } from "../../service/postItems";
+import { ClassGetComments } from "../../service/getitems/getItems";
+import { ClassGetArticle } from "../../service/getitems/getArticle";
 import { LoadingComponent } from '../../components/load/load.component'
 
 type TypeUserInfo = {

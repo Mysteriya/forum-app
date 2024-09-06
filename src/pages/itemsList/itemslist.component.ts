@@ -2,15 +2,15 @@ import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterLink } from "@angular/router";
 
-import { IItemsProprtyes } from "../../../types/typeObject";
+import { IItemsProprtyes } from "../../types/typeObject";
 
 import { LoadingComponent } from '../../components/load/load.component'
 import { ClassModalComponent } from "../../components/modal/modal.component";
-import { ClassIsLoading } from "../../../service/IsLoading";
+import { ClassIsLoading } from "../../service/IsLoading";
 
-import { ClassGetArticles, ClassSearchArticles } from "../../../service/getitems/getArticle";
+import { ClassGetArticles, ClassSearchArticles } from "../../service/getitems/getArticle";
 
-import { categories } from "../../../service/var/categories";
+import { categories } from "../../service/var/categories";
 
 export @Component({
   selector: 'items-list',

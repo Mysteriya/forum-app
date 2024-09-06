@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { ClassUser } from '../../../service/User'
+import { ClassUser } from '../../service/User'
 import { Router } from "@angular/router";
 
 export @Component({

@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms'
 
-import { ClassPostArticle } from "../../../service/postItems";
+import { ClassPostArticle } from "../../service/postItems";
 
-import { categories } from "../../../service/var/categories";
+import { categories } from "../../service/var/categories";
 
 type TypeUserInfo = {
     name: string
