@@ -9,7 +9,7 @@ export class ClassPostItems extends ClassServiceItems {
 
 export class ClassPostComment extends ClassPostItems{
     async postComment(item: TypePostComment){
-        return await fetch(`${this.API_SERVICE}/${item.articleID}/comments/`, {
+        return await fetch(`${this.API_SERVICE}/${item.publicationID}/comments/`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -18,7 +18,7 @@ export class ClassPostComment extends ClassPostItems{
 
                 userID: item.userID,
                 commentID: Math.floor(Math.random() * 50000),
-                articleID: item.articleID,
+                articleID: item.publicationID,
 
                 date: Date()
             })
@@ -34,14 +34,15 @@ export class ClassPostArticle extends ClassPostItems{
             body: JSON.stringify({
                 userName: item.userName,
                 userID: item.userID,
-                articleID: Math.floor(Math.random() * 50000),
+                publicationID: item.publicationID,
             
                 title: item.title,
                 description: item.description,
                 text: item.text,
 
+                categoryName: item.categoryName,
                 category: item.category,
-            
+
                 date: Date()
             })
             

@@ -14,11 +14,11 @@ export const routes: Routes = [
         component: ClassCreateArticle
     },
     {
-        path: 'articles',
+        path: 'publication',
         component: itemsListComponent
     },
     {
-        path: 'articles/:id',
+        path: 'publication/:id',
         component: FullPageComponent
     },
 ];

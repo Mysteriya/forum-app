@@ -1,0 +1,31 @@
+<div class="vote">
+  <div class="votes">
+    @for(item of votes.items; track item.id){
+    <div class="elem">
+      @if(voteActive === true && item.id === changeVoteActiveID){
+      <div>
+        <input
+          type="text"
+          class="changeVoteName"
+          placeholder="Изменить значение . . ."
+          [(ngModel)]="inputVoteText"
+        />
+
+        <button (click)="acceptChangeVoteName(inputVoteText, item.id)">
+          Изменить
+        </button>
+      </div>
+      }@else {
+      <p>{{ item.name }}</p>
+      }
+
+      <div>
+        <button (click)="removeVote(item.id)">Удл</button>
+        <button (click)="changeVoteActive(item.id, item.name)">Изм</button>
+      </div>
+    </div>
+    }
+  </div>
+
+  <button (click)="createVote()" class="createVote">+</button>
+</div>

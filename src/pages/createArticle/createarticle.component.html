@@ -2,34 +2,48 @@
   <h1>Средство создания статьей</h1>
 
   <input
-    id="inputComponent"
+    class="input"
+    id="inputName"
+    э
     type="text"
     [(ngModel)]="titleArticle"
-    placeholder="Имя статьи"
+    placeholder="Имя публикации"
   />
-  <input
-    id="inputComponent"
+  <textarea
+    class="input"
+    id="inputDescription"
     type="text"
     [(ngModel)]="descriptionArticle"
-    placeholder="Описание статьи"
-  />
+    placeholder="Описание публикации"
+  ></textarea>
 
-  <input
-    id="inputComponent"
+  <textarea
+    class="input"
+    id="inputText"
     type="text"
     [(ngModel)]="textArticle"
     placeholder="ТЕКСТ"
-  />
+  ></textarea>
 
   <div class="select">
     <h2>Выбирите категорию</h2>
 
     <select>
-      @for (elem of categories; track elem.name) {
-      <option (click)="abc(elem.category)">{{ elem.name }}</option>
+      @for (elem of categoriesName; track elem.name) {
+      <option (click)="chooseCategory(elem.category)">{{ elem.name }}</option>
       }
     </select>
   </div>
 
-  <button id="buttonComponent" (click)="create()">Опубликовать</button>
+  <div class="selectedCategory">
+    @if(categoryName === 'vote'){
+    <createvote-component
+      (addItemEvent)="implementChildData($event)"
+    ></createvote-component>
+    }
+  </div>
+
+  <button id="buttonComponent" class="publish" (click)="create()">
+    Опубликовать
+  </button>
 </div>

@@ -3,7 +3,9 @@ import { FormsModule } from '@angular/forms'
 
 import { ClassPostArticle } from "../../service/postItems";
 
-import { categories } from "../../service/var/categories";
+import { categoriesName } from "../../service/var/categories";
+import { Router } from "@angular/router";
+import { ClassCreateVoteComponent } from "../../components/vote/createVote/createvote.component";
 
 type TypeUserInfo = {
     name: string
@@ -13,38 +15,51 @@ type TypeUserInfo = {
 export @Component({
     selector: 'create-article',
     standalone: true,
-    imports: [ FormsModule ],
+    imports: [FormsModule, ClassCreateVoteComponent],
     templateUrl: './createarticle.component.html',
     styleUrl: './createarticle.component.scss'
 })
 
 class ClassCreateArticle {
-    categories = categories
+    categoriesName = categoriesName
 
     userInfo: TypeUserInfo = JSON.parse(window.localStorage.getItem('forumUser') || '{}')
 
     titleArticle!: string
     descriptionArticle!: string
     textArticle!: string
-    category: string = 'nothing'
+    categoryName: string = 'nothing'
+
+    childItem: any = {}
+
+    constructor(private router: Router){}
 
     create(){
-        new ClassPostArticle().postArticle({
+        const item = {
             userName: this.userInfo.name,
             userID: this.userInfo.userID,
+            publicationID: String(Math.floor(Math.random() * 50000)),
         
             title: this.titleArticle,
             description: this.descriptionArticle,
             text: this.textArticle,
 
-            category: this.category,
+            categoryName: this.categoryName,
+            category: this.childItem,
         
             date: Date()
-        })
-    }
-    abc(name:string){
-        this.category = name
+        }
 
-        console.log(this.category)
+        new ClassPostArticle().postArticle(item)
+
+        this.router.navigate(['/publication/', item.publicationID])
+    }
+
+    chooseCategory(name:string){
+        this.categoryName = name
+    }
+
+    implementChildData(item: any){
+        this.childItem = item
     }
 }

@@ -20,14 +20,14 @@ class LoginPageComponent implements OnInit {
         const data = window.localStorage.getItem("forumUser")
 
         if(data !== null){
-            this.router.navigate(['/articles'])
+            this.router.navigate(['/publication'])
         }
     }
     
     acceptName(){
         if(this.inputName !== ''){
             new ClassUser().acceptName(this.inputName)
-            this.router.navigate(['/articles'])
+            this.router.navigate(['/publication'])
         }
     }
 }

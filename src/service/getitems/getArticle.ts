@@ -21,11 +21,22 @@ export class ClassGetArticles extends ClassGetItems{
     }
 }
 
-export class ClassSearchArticles extends ClassGetItems{
-    async search(text: string, categoryActive: string){
-        const category = categoryActive !== '' ? `&category=${categoryActive}` : ''
-        
-        const url = `https://65b499eb41db5efd2866a9d7.mockapi.io/forums?search=${text}${category}`
+export class ClassSearchTextArticles extends ClassGetItems{
+    async search(text: string){    
+        const url = `https://65b499eb41db5efd2866a9d7.mockapi.io/forums?search=${text}`
+
+        try{
+            return await axios.get(url)
+
+        }   catch(error){
+            return []
+        }
+    }
+}
+export class ClassSearchCategoryArticles extends ClassGetItems{
+    async category(categoryActive: string){
+        const category = categoryActive !== '' ? `&categoryName=${categoryActive}` : ''
+        const url = `https://65b499eb41db5efd2866a9d7.mockapi.io/forums?${category}`
 
         try{
             return await axios.get(url)

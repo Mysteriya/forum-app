@@ -1,5 +1,5 @@
 <div class="fullPage-block" id="page">
-  <button id="buttonComponent" routerLink="/articles/">Назад</button>
+  <button id="buttonComponent" routerLink="/publication/">Назад</button>
 
   <div class="body">
     <h1>{{ item.title }}</h1>
@@ -16,8 +16,8 @@
       />
       <button (click)="postComment()" id="buttonComponent">Отпраавить</button>
     </div>
-    @if (isMount === true) { @if(item.comments?.length !== 0){ @for (elem of
-    item.comments; track elem.commentID) {
+    @if (isMount === true) { @if(comments?.length !== 0){ @for (elem of
+    comments; track elem.commentID) {
     <div
       class="comment"
       [ngStyle]="{

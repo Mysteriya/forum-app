@@ -1,17 +1,21 @@
 // Types of Objects
 
 export interface IItemsProprtyes {
-    title?: string,
+    publicationID?: string,
+    userName?: string,
+    userID?: string, 
+    title?: string, 
     description?: string,
-    text?: string;
-    articleID?: string;
-    comments?: TypeComments[];
+    text?: string, 
+    categoryName?: string, 
+    category?: any;
+    date?: string,
 }
 
 export type TypeComments = {
     name?: string;
     text?: string;
-    articleID?: string;
+    publicationID?: string;
     commentID?: string;
     userID?: string;
 }
@@ -19,23 +23,32 @@ export type TypeComments = {
 export type TypePostComment = {
     name?: string;
     text?: string;
-    articleID?: string;
+    publicationID?: string;
     userID?: string;
 }
 
 export type TypePostArticles = {
     userName: string;
     userID: string;
+    publicationID: string;
 
     title: string,
     description: string;
     text: string;
 
-    category: string;
+    categoryName: string;
+    category?: {};
 
     date: string;
-
-
-
 }
 
+export type TypeVote = {
+    name: string;
+    countVotes: string;
+    id: string;
+}
+
+export type TypeUserInfo = {
+    name: string
+    userID: string
+}
