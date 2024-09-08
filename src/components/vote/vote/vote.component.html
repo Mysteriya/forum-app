@@ -1,0 +1,10 @@
+@for(elem of item.category.items; track elem.id){
+<div class="vote-block">
+  <div
+    class="fill"
+    style="width: {{ colculateWidth(item.category.totalVoters, elem) }};"
+  ></div>
+  <p>{{ elem.name }}</p>
+  <button class="vote">Проголосовать</button>
+</div>
+}

@@ -1,65 +1,17 @@
 <div>
-  <header class="header">
-    <button id="buttonComponent" (click)="isOpenWindow = !isOpenWindow">
-      Категории
-    </button>
+  <header-component
+    (filterItem)="setItems($event)"
+    (searchItem)="setItems($event)"
+    (setMount)="setIsMount($event)"
+  ></header-component>
 
-    <modal-window [isOpen]="isOpenWindow">
-      @for(item of categoriesName; track item.name){
-      <button
-        class="buttonCaregory"
-        style="background-color: {{
-          item.category === categoryActive
-            ? 'lightblue'
-            : 'rgba(0, 0, 0, 0.096)'
-        }}"
-        (click)="acceptCategory(item.category)"
-      >
-        {{ item.name }}
-      </button>
-      }
-    </modal-window>
-
-    <input
-      id="inputComponent"
-      type="text"
-      placeholder="Поиск . . ."
-      [(ngModel)]="searchInput"
-    />
-    <button id="buttonComponent" (click)="search()">Поиск</button>
-  </header>
-
-  <div class="items">
-    @if(isMount){ @if(items !== []){ @for(item of items; track
-    item.publicationID){
-    <div class="item">
-      <div>
-        <a routerLink="/publication/{{ item.publicationID }}"
-          ><h1>{{ item.title }}</h1></a
-        >
-        <p class="category">{{ findElem(item.categoryName!) }}</p>
-      </div>
-
-      <p class="description">{{ item.description }}</p>
-
-      @if(item.category !== {}){
-      <div class="specificCategoryBlock">
-        @for(elem of item.category.items; track elem.id){
-        <div class="vote-block">
-          <div class="fill"></div>
-          <p>{{ elem.name }}</p>
-          <button class="vote" (click)="vote(item.category.totalVoters, elem)">
-            Проголосовать
-          </button>
-        </div>
-        }
-      </div>
-      }
-    </div>
-    } }@else if(items === []) {
-    <div><h1>В данный момент на эту тему нету поcтов.</h1></div>
+  <body class="items">
+    @if(isMount === true){ @if(items !== undefined){
+    <formitem-component [items]="items"></formitem-component>
+    } @else {
+    <h1 class="notfound-elem">На дунную тему публикаций не нашлось :(</h1>
     } } @else {
     <load-component></load-component>
     }
-  </div>
+  </body>
 </div>

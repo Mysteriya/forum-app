@@ -1,0 +1,53 @@
+.vote-block{
+    width: 100%;
+    height: 50px;
+
+    border-radius: 100px;
+    border: solid 1px rgb(105, 105, 105);
+
+    margin-top: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p{
+        font-size: 20px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        margin-left: 10px;
+
+        z-index: 4;
+    }
+
+    .fill{
+        position: absolute;
+        height: 50px;
+        border-radius: 50px;
+        background-color: rgb(115, 192, 255);
+
+        z-index: 3;
+    }
+
+    .vote{
+        width: 100px;
+        height: 20px;
+
+        background-color: white;
+
+        border: solid 1px rgb(60, 60, 60);
+        border-radius: 5px; 
+
+        margin-right: 15px;
+
+        z-index: 4;
+
+        &:hover{
+        border: solid 1px rgb(114, 114, 114)
+        }
+        
+        &:active{
+        border: solid 1px rgb(46, 46, 46)
+        }
+    }
+}

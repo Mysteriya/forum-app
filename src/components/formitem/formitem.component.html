@@ -1,0 +1,21 @@
+@for(item of items; track item.publicationID){
+<div class="item">
+  <div>
+    <a routerLink="/publication/{{ item.publicationID }}"
+      ><h1>{{ item.title }}</h1></a
+    >
+
+    <p class="category">{{ findElem(item.categoryName!) }}</p>
+  </div>
+
+  <p class="description">{{ item.description }}</p>
+
+  @if(item.category !== {}){
+  <div class="specificCategoryBlock">
+    @if(item.categoryName === 'vote'){
+    <vote-component [item]="item"></vote-component>
+    }
+  </div>
+  }
+</div>
+}

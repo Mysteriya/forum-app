@@ -6,50 +6,32 @@
     <p>{{ item.text }}</p>
   </div>
 
-  <div class="comments">
-    <div>
+  <div class="comments-block">
+    <div class="inputBlock">
       <input
         type="text"
         placeholder="Сообщение . . ."
         [(ngModel)]="inputText"
         id="inputComponent"
+        class="comment-input"
       />
-      <button (click)="postComment()" id="buttonComponent">Отпраавить</button>
-    </div>
-    @if (isMount === true) { @if(comments?.length !== 0){ @for (elem of
-    comments; track elem.commentID) {
-    <div
-      class="comment"
-      [ngStyle]="{
-        background:
-          elem.userID === userInfo.userID
-            ? ['rgba(131, 131, 131, 100)']
-            : ['rgb(131, 131, 131, 0.337)']
-      }"
-    >
-      <div class="user">
-        <div>
-          <p class="name">{{ elem.name }}</p>
-          <p
-            class="id"
-            [ngStyle]="{
-              color:
-                elem.userID === userInfo.userID
-                  ? ['rgb(85, 85, 85)']
-                  : ['rgb(131, 131, 131, 0.337)']
-            }"
-          ></p>
-        </div>
-      </div>
 
-      <p class="text">{{ elem.text }}</p>
+      <button
+        (click)="postComment()"
+        id="buttonComponent"
+        class="comment-button"
+      >
+        Отпраавить
+      </button>
     </div>
-    } }@else {
-    <div style="margin-top: 50px">
-      <h1>Комментариев пока что нету :,(</h1>
+
+    <div class="comments">
+      @if (isMount) { @for(comment of comments; track comment.commentID){
+      <comment-component
+        [comment]="comment"
+        [userInfo]="userInfo"
+      ></comment-component>
+      } }
     </div>
-    } }@else {
-    <load-component></load-component>
-    }
   </div>
 </div>

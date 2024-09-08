@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms'
 
-import { ClassPostArticle } from "../../service/postItems";
+import { ClassPostPublication } from "../../service/postItems";
 
 import { categoriesName } from "../../service/var/categories";
 import { Router } from "@angular/router";
@@ -25,9 +25,9 @@ class ClassCreateArticle {
 
     userInfo: TypeUserInfo = JSON.parse(window.localStorage.getItem('forumUser') || '{}')
 
-    titleArticle!: string
-    descriptionArticle!: string
-    textArticle!: string
+    titlePublication!: string
+    descriptionPublication!: string
+    textPublication!: string
     categoryName: string = 'nothing'
 
     childItem: any = {}
@@ -40,9 +40,9 @@ class ClassCreateArticle {
             userID: this.userInfo.userID,
             publicationID: String(Math.floor(Math.random() * 50000)),
         
-            title: this.titleArticle,
-            description: this.descriptionArticle,
-            text: this.textArticle,
+            title: this.titlePublication,
+            description: this.descriptionPublication,
+            text: this.textPublication,
 
             categoryName: this.categoryName,
             category: this.childItem,
@@ -50,7 +50,7 @@ class ClassCreateArticle {
             date: Date()
         }
 
-        new ClassPostArticle().postArticle(item)
+        new ClassPostPublication().postArticle(item)
 
         this.router.navigate(['/publication/', item.publicationID])
     }

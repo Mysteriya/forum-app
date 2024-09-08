@@ -13,7 +13,7 @@ export interface IItemsProprtyes {
 }
 
 export type TypeComments = {
-    name?: string;
+    userName?: string;
     text?: string;
     publicationID?: string;
     commentID?: string;
@@ -21,7 +21,7 @@ export type TypeComments = {
 }
 
 export type TypePostComment = {
-    name?: string;
+    userName?: string;
     text?: string;
     publicationID?: string;
     userID?: string;

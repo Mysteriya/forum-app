@@ -8,13 +8,15 @@ import { IItemsProprtyes, TypeComments, TypeUserInfo } from "../../types/typeObj
 import { ClassIsLoading } from "../../service/IsLoading";
 import { ClassPostComment } from "../../service/postItems";
 import { ClassGetComments } from "../../service/getitems/getItems";
-import { ClassGetArticle } from "../../service/getitems/getArticle";
+import { ClassGetPublication } from "../../service/getitems/getPublication";
+
+import { ClassCommentsComponent } from "../../components/comment/comment.component";
 import { LoadingComponent } from '../../components/load/load.component'
 
 export @Component({
     selector: 'full-page',
     standalone: true,
-    imports: [FormsModule, RouterLink, NgStyle, LoadingComponent],
+    imports: [FormsModule, RouterLink, NgStyle, LoadingComponent, ClassCommentsComponent],
     templateUrl: './fullpage.component.html',
     styleUrl: './fullpage.component.scss'
 })
@@ -22,12 +24,12 @@ export @Component({
 class FullPageComponent {
     item: IItemsProprtyes = {}
     comments:TypeComments[] = []
-    
-    inputText: string = ''
-    isMount = false
-    postID!: string
 
+    isMount = false
+    
     userInfo: TypeUserInfo = JSON.parse(window.localStorage.getItem('forumUser') || '{}')
+    inputText: string = ''
+    postID!: string
 
     constructor(private router: Router){
         this.postID = router.url[router.url.length - 1]
@@ -37,18 +39,20 @@ class FullPageComponent {
         const {post, comments, isMount} = await new ClassIsLoading().isLoading(
             {
                 comments: await new ClassGetComments().getComments(this.postID),
-                post: await new ClassGetArticle().getArticle(this.postID)
+                post: await new ClassGetPublication().getPublication(this.postID)
             }
         )
 
         this.item = {...post.data}
         this.comments = comments.data
         this.isMount = isMount
+
+        console.log(comments)
     }
 
     async postComment(){
         new ClassPostComment().postComment({
-            name: this.userInfo.name,
+            userName: this.userInfo.name,
             text: this.inputText,
             userID: this.userInfo.userID,
             publicationID: this.postID

@@ -13,7 +13,7 @@ export class ClassPostComment extends ClassPostItems{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                name: item.name,
+                userName: item.userName,
                 text: item.text,
 
                 userID: item.userID,
@@ -26,7 +26,7 @@ export class ClassPostComment extends ClassPostItems{
     }
 }
 
-export class ClassPostArticle extends ClassPostItems{
+export class ClassPostPublication extends ClassPostItems{
     async postArticle(item: TypePostArticles){
         return await fetch(this.API_SERVICE, {
             method: 'POST',
