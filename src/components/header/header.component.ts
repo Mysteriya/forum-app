@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { ClassSearchTextPublications, ClassSearchCategoryPublications } from "../../service/getitems/getPublication";
+import { ClassSearchTextPublications, ClassSearchCategoryPublications } from "../../service/get/getItems";
 import { ClassIsLoading } from "../../service/IsLoading";
 import { categoriesName } from "../../service/var/categories";
 

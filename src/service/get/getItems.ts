@@ -1,10 +1,20 @@
 import axios from "axios"
-import { ClassGetItems } from "./getItems"
 
-export class ClassGetPublication extends ClassGetItems {
-    async getPublication(postID: string){
+import { ClassServiceItems } from '../ServiceItems';
+
+export class ClassGetItems extends ClassServiceItems {
+    constructor() {
+        super(); 
+    }
+}
+
+export class ClassGetComments extends ClassGetItems {
+    async getComments(postID: string, id: string) {
         try {
-            return await axios.get(`${this.API_SERVICE}/${postID}`) 
+            const url = new URL(`${this.API_SERVICE}/${id}/comments`);
+            url.searchParams.append('publicationID', `${postID}`);
+
+            return await axios.get(`${url}`)
         } catch (error) {
             return []
         }

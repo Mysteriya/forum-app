@@ -1,15 +1,15 @@
-import { TypePostArticles, TypePostComment } from "../types/typeObject";
-import { ClassServiceItems } from "./ServiceItems";
+import { TypePostPublication, TypePostComment } from "../../types/typeObject";
+import { ClassServiceItems } from "../ServiceItems";
 
-export class ClassPostItems extends ClassServiceItems {
+export class ClassPostItem extends ClassServiceItems {
     constructor(){
         super();
     }
 }
 
-export class ClassPostComment extends ClassPostItems{
-    async postComment(item: TypePostComment){
-        return await fetch(`${this.API_SERVICE}/${item.publicationID}/comments/`, {
+export class ClassPostComment extends ClassPostItem {
+    async postComment(item: TypePostComment, id: string){
+        return await fetch(`${this.API_SERVICE}/${id}/comments/`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -17,8 +17,8 @@ export class ClassPostComment extends ClassPostItems{
                 text: item.text,
 
                 userID: item.userID,
-                commentID: Math.floor(Math.random() * 50000),
-                articleID: item.publicationID,
+                commentID: Math.floor(Math.random() * 50000000),
+                publicationID: item.publicationID,
 
                 date: Date()
             })
@@ -26,8 +26,8 @@ export class ClassPostComment extends ClassPostItems{
     }
 }
 
-export class ClassPostPublication extends ClassPostItems{
-    async postArticle(item: TypePostArticles){
+export class ClassPostPublication extends ClassPostItem {
+    async postArticle(item: TypePostPublication){
         return await fetch(this.API_SERVICE, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

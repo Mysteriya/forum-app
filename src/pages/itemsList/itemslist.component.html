@@ -6,12 +6,14 @@
   ></header-component>
 
   <body class="items">
-    @if(isMount === true){ @if(items !== undefined){
-    <formitem-component [items]="items"></formitem-component>
+    @if(isMount){
+       @if(items === '[]'){
+          <formitem-component [items]="items"></formitem-component>
+        } @else {
+          <h1 class="notfound-elem">Публикаций не нашлось :(</h1>
+        } 
     } @else {
-    <h1 class="notfound-elem">На дунную тему публикаций не нашлось :(</h1>
-    } } @else {
-    <load-component></load-component>
+      <load-component></load-component>
     }
   </body>
 </div>

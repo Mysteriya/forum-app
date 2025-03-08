@@ -10,7 +10,7 @@ export const routes: Routes = [
         component: LoginPageComponent
     },
     {
-        path: 'profile',
+        path: 'create',
         component: ClassCreateArticle
     },
     {

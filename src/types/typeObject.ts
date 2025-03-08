@@ -10,6 +10,7 @@ export interface IItemsProprtyes {
     categoryName?: string, 
     category?: any;
     date?: string,
+    pubID?: string;
 }
 
 export type TypeComments = {
@@ -18,6 +19,7 @@ export type TypeComments = {
     publicationID?: string;
     commentID?: string;
     userID?: string;
+    commID?: string;
 }
 
 export type TypePostComment = {
@@ -27,7 +29,7 @@ export type TypePostComment = {
     userID?: string;
 }
 
-export type TypePostArticles = {
+export type TypePostPublication = {
     userName: string;
     userID: string;
     publicationID: string;

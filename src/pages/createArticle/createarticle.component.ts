@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms'
 
-import { ClassPostPublication } from "../../service/postItems";
+import { ClassPostPublication } from "../../service/post/postItem";
 
 import { categoriesName } from "../../service/var/categories";
 import { Router } from "@angular/router";
@@ -34,11 +34,11 @@ class ClassCreateArticle {
 
     constructor(private router: Router){}
 
-    create(){
+    async create(){
         const item = {
             userName: this.userInfo.name,
             userID: this.userInfo.userID,
-            publicationID: String(Math.floor(Math.random() * 50000)),
+            publicationID: String(Math.floor(Math.random() * 5000000)),
         
             title: this.titlePublication,
             description: this.descriptionPublication,
@@ -50,12 +50,11 @@ class ClassCreateArticle {
             date: Date()
         }
 
-        new ClassPostPublication().postArticle(item)
-
-        this.router.navigate(['/publication/', item.publicationID])
+        await new ClassPostPublication().postArticle(item)
     }
 
     chooseCategory(name:string){
+        console.log(name)
         this.categoryName = name
     }
 

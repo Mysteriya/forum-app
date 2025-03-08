@@ -1,37 +1,41 @@
 <div class="fullPage-block" id="page">
-  <button id="buttonComponent" routerLink="/publication/">Назад</button>
+  @if(isMount){
+    <button id="buttonComponent" routerLink="/publication/">Назад</button>
 
-  <div class="body">
-    <h1>{{ item.title }}</h1>
-    <p>{{ item.text }}</p>
-  </div>
-
-  <div class="comments-block">
-    <div class="inputBlock">
-      <input
-        type="text"
-        placeholder="Сообщение . . ."
-        [(ngModel)]="inputText"
-        id="inputComponent"
-        class="comment-input"
-      />
-
-      <button
-        (click)="postComment()"
-        id="buttonComponent"
-        class="comment-button"
-      >
-        Отправить
-      </button>
+    <div class="body">
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.text }}</p>
     </div>
-
-    <div class="comments">
-      @if (isMount) { @for(comment of comments; track comment.commentID){
-      <comment-component
-        [comment]="comment"
-        [userInfo]="userInfo"
-      ></comment-component>
-      } }
+  
+    <div class="comments-block">
+      <div class="inputBlock">
+        <input
+          type="text"
+          placeholder="Сообщение . . ."
+          [(ngModel)]="inputText"
+          id="inputComponent"
+          class="comment-input"
+        />
+  
+        <button
+          (click)="postComment()"
+          id="buttonComponent"
+          class="comment-button"
+        >
+          Отправить
+        </button>
+      </div>
+  
+      <div class="comments">
+        @if (isMount) { @for(comment of comments; track comment.commentID){
+        <comment-component
+          [comment]="comment"
+          [userInfo]="userInfo"
+        ></comment-component>
+        } }
+      </div>
     </div>
-  </div>
+  }@else {
+    <load-component></load-component>
+  }
 </div>

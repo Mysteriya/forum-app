@@ -1,7 +1,7 @@
 @for(item of items; track item.publicationID){
 <div class="item">
   <div>
-    <a routerLink="/publication/{{ item.publicationID }}"
+    <a routerLink="/publication/{{item.publicationID}}"
       ><h1>{{ item.title }}</h1></a
     >
 
@@ -10,12 +10,12 @@
 
   <p class="description">{{ item.description }}</p>
 
-  @if(item.category !== {}){
+  <!-- @if(item.category !== {}){
   <div class="specificCategoryBlock">
     @if(item.categoryName === 'vote'){
     <vote-component [item]="item"></vote-component>
     }
   </div>
-  }
+  } -->
 </div>
 }
