@@ -7,7 +7,7 @@
 
   <body class="items">
     @if(isMount){
-       @if(items === '[]'){
+       @if(items !== '[]'){
           <formitem-component [items]="items"></formitem-component>
         } @else {
           <h1 class="notfound-elem">Публикаций не нашлось :(</h1>

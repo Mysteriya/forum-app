@@ -20,7 +20,7 @@ export @Component({
     styleUrl: './createarticle.component.scss'
 })
 
-class ClassCreateArticle {
+class ClassCreatePublication {
     categoriesName = categoriesName
 
     userInfo: TypeUserInfo = JSON.parse(window.localStorage.getItem('forumUser') || '{}')
