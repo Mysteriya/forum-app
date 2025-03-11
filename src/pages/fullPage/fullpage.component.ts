@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms'
 import { Router, RouterLink } from "@angular/router";
-import { NgStyle } from "@angular/common";
 
 import { IItemsProprtyes, TypeComments, TypeUserInfo } from "../../types/typeObject";
 
@@ -16,7 +15,7 @@ import { LoadingComponent } from '../../components/load/load.component'
 export @Component({
     selector: 'full-page',
     standalone: true,
-    imports: [FormsModule, RouterLink, NgStyle, LoadingComponent, ClassCommentsComponent],
+    imports: [FormsModule, RouterLink, LoadingComponent, ClassCommentsComponent],
     templateUrl: './fullpage.component.html',
     styleUrl: './fullpage.component.scss'
 })
@@ -39,20 +38,36 @@ class FullPageComponent {
 
     async ngOnInit(){
 
-        const getData = async () => {
-            const post: any = await new ClassGetPublication().getPublication(this.postID)
-            this.id =  post.data[0].pubID
-            const comments: any = await new ClassGetComments().getComments(this.postID, post.data[0].pubID)
+        const firstFetchQuery = async() => {
+            const getData = async () => {
+                const post: any = await new ClassGetPublication().getPublication(this.postID)
+                this.id =  post.data[0].pubID
+                const comments: any = await new ClassGetComments().getComments(this.postID, post.data[0].pubID)
+    
+                return {post, comments}
+            }
+    
+            const {post, comments, isMount} = await new ClassIsLoading().isLoading(
+                await getData()
+            )
+    
+            this.item = post.data[0]
+            this.comments = comments.data
+            this.isMount = isMount
 
-            return {post, comments}
+            constantlyUpdatingData()
         }
-        const {post, comments, isMount} = await new ClassIsLoading().isLoading(
-            await getData()
-        )
 
-        this.item = post.data[0]
-        this.comments = comments.data
-        this.isMount = isMount
+        const constantlyUpdatingData = async() => {
+            setTimeout(async () => {
+                const comments: any = await new ClassGetComments().getComments(this.postID, this.id)
+                this.comments = comments.data
+
+                constantlyUpdatingData()
+            }, 6000)
+        }
+
+        firstFetchQuery()
     }
 
     async postComment(){
@@ -66,8 +81,6 @@ class FullPageComponent {
 
             this.id
         )
-
-
 
         this.inputText = ''
     }

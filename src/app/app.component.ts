@@ -12,15 +12,15 @@ import { Router, RouterOutlet } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router){}
   
-      public ngOnInit(): void {
-        const data = window.localStorage.getItem("forumUser")
+  public ngOnInit(): void {
+    const data = window.localStorage.getItem("forumUser")
 
-        if(data !== null){
-          this.router.navigate(['/publication'])
+    if(data !== null){
+      this.router.navigate(['/publication'])
 
-        }else{
-          this.router.navigate(['/'])
+    }else{
+      this.router.navigate(['/'])
 
-        }
-      }
+    }
+  }
 }
