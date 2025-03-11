@@ -30,7 +30,6 @@ class itemsListComponent implements OnInit {
 
     this.items = data === '[]' ? '[]' : data
 
-    console.log(this.items)
     this.isMount = isMount
   }
 

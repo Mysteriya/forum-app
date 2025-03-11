@@ -12,39 +12,41 @@
   }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   width: 100%;
-  height: 70px;
+  height: 25%;
 
   background-color: rgba(219, 219, 219, 0.552);
   
   border-radius: 50px;
 
-  input {
-    margin-left: 20px;
+  .searchPublications{
+    display: flex;
+    justify-content: center;
 
-    width: 40%;
-    height: 0px;
-  }
+    padding: 10px;
 
-  .buttonCaregory{
-    width: 160px;
-    height: 50px;
-
-    padding: 5px;
-    margin-top: 10px;
-    margin-left: 5px;
-
-    border-radius: 50px;
-    border: none;
-
-    font-size: larger;
-
-    background-color: rgba(184, 184, 184, 0.542);
-
-    @include ah()
+    #inputComponent {
+      width: 40%;
+      height: 100%;
+  
+      padding: 10px;
+    }
+  
+    #buttonComponent{
+      width: 20%;
+      height: 100%;
+  
+      padding: 9px;
+  
+      border-radius: 50px;
+      border: none;
+  
+      font-size: larger;
+      text-align: center;
+  
+      background-color: rgba(184, 184, 184, 0.542);
+  
+      @include ah()
+    }
   }
 }

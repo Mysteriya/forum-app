@@ -11,18 +11,10 @@ export @Component({
     styleUrl: './login.component.scss'
 })
 
-class LoginPageComponent implements OnInit {
+class LoginPageComponent {
     inputName = ''
 
     constructor(private router: Router){}
-
-    public ngOnInit(): void {
-        const data = window.localStorage.getItem("forumUser")
-
-        if(data !== null){
-            this.router.navigate(['/publication'])
-        }
-    }
     
     acceptName(){
         if(this.inputName !== ''){

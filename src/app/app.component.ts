@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +9,18 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss' 
 })
 
-export class AppComponent {}
+export class AppComponent {
+  constructor(private router: Router){}
+  
+      public ngOnInit(): void {
+        const data = window.localStorage.getItem("forumUser")
+
+        if(data !== null){
+          this.router.navigate(['/publication'])
+
+        }else{
+          this.router.navigate(['/'])
+
+        }
+      }
+}
