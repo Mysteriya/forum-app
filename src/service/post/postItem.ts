@@ -49,3 +49,25 @@ export class ClassPostPublication extends ClassPostItem {
         })
     }
 }
+
+export class ClassPostFile extends ClassPostItem {
+    async postFile(item: any){
+        const file = item.target.files[0]
+
+        if(file){
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
+
+            reader.onload = async () => {
+                return await fetch(this.API_SERVICE, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        file: reader.result
+                    })
+                    
+                })
+            }
+        }
+    }
+}

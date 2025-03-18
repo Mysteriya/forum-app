@@ -37,7 +37,6 @@ class FullPageComponent {
     }
 
     async ngOnInit(){
-
         const firstFetchQuery = async() => {
             const getData = async () => {
                 const post: any = await new ClassGetPublication().getPublication(this.postID)

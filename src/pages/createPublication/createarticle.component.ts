@@ -2,10 +2,9 @@ import { Component } from "@angular/core";
 import { FormsModule } from '@angular/forms'
 
 import { ClassPostPublication } from "../../service/post/postItem";
-
-import { categoriesName } from "../../service/var/categories";
 import { Router } from "@angular/router";
-import { ClassCreateVoteComponent } from "../../components/vote/createVote/createvote.component";
+import { TypeListInput } from "../../types/typeObject";
+import { getFileService } from "../../service/getFile";
 
 type TypeUserInfo = {
     name: string
@@ -15,22 +14,23 @@ type TypeUserInfo = {
 export @Component({
     selector: 'create-article',
     standalone: true,
-    imports: [FormsModule, ClassCreateVoteComponent],
+    imports: [FormsModule],
     templateUrl: './createarticle.component.html',
     styleUrl: './createarticle.component.scss'
 })
 
 class ClassCreatePublication {
-    categoriesName = categoriesName
+    listInput: TypeListInput[] = []
+    selectInput?: string
 
     userInfo: TypeUserInfo = JSON.parse(window.localStorage.getItem('forumUser') || '{}')
 
     titlePublication!: string
     descriptionPublication!: string
-    textPublication!: string
     categoryName: string = 'nothing'
 
     childItem: any = {}
+    img?: string;
 
     constructor(private router: Router){}
 
@@ -42,7 +42,7 @@ class ClassCreatePublication {
         
             title: this.titlePublication,
             description: this.descriptionPublication,
-            text: this.textPublication,
+            text: this.listInput,
 
             categoryName: this.categoryName,
             category: this.childItem,
@@ -54,11 +54,42 @@ class ClassCreatePublication {
     }
 
     chooseCategory(name:string){
-        console.log(name)
         this.categoryName = name
     }
 
     implementChildData(item: any){
         this.childItem = item
+    }
+
+    addDataListInput(type: any, text: string){
+        this.listInput.push(
+            {
+                type: type,
+                data: text,
+                key: this.listInput.length
+            }
+        )
+    }
+
+    writeText(text: any, index: number){
+        this.listInput[index].data = text.target.value
+    }
+    
+    async getFile(input: any, index: number){
+        const file = input.target.files[0]
+
+    if(file){
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+
+            reader.onload = async() => {
+                this.listInput[index].data = reader.result as string | undefined
+                this.listInput[index].type = 'image-true'
+            }
+        }
+    } 
+
+    removeText(index: number){
+        this.listInput = this.listInput.filter(elem =>  elem.key !== index )
     }
 }

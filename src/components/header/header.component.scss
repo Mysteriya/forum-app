@@ -1,16 +1,3 @@
-@mixin ah {
-    transition: 0.1s all;
-  
-    &:hover {
-      background-color: black;
-      color: white;
-    }
-    &:active {
-      background-color: rgb(57, 57, 57);
-      color: rgb(158, 158, 158);
-    }
-  }
-
 header {
   width: 100%;
   height: 25%;
@@ -30,23 +17,6 @@ header {
       height: 100%;
   
       padding: 10px;
-    }
-  
-    #buttonComponent{
-      width: 20%;
-      height: 100%;
-  
-      padding: 9px;
-  
-      border-radius: 50px;
-      border: none;
-  
-      font-size: larger;
-      text-align: center;
-  
-      background-color: rgba(184, 184, 184, 0.542);
-  
-      @include ah()
     }
   }
 }

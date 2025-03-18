@@ -17,32 +17,35 @@
     placeholder="Описание публикации"
   ></textarea>
 
-  <textarea
-    class="input"
-    id="inputText"
-    type="text"
-    [(ngModel)]="textPublication"
-    placeholder="ТЕКСТ"
-  ></textarea>
-
-  <!-- <div class="select">
-    <h2>Выберите категорию</h2>
-
-    <select>
-      @for (elem of categoriesName; track elem.name) {
-      <option (click)="chooseCategory(elem.category)">{{ elem.name }}</option>
+  <div class="createBody">
+    @for (item of listInput; track item) {
+      @if (item.type === 'text') {
+        <textarea
+          class="input"
+          id="inputText"
+          type="text"
+          (keyup)="writeText($event, item.key!)" 
+          placeholder="ТЕКСТ"
+        ></textarea>
       }
-    </select>
-  </div> -->
-
-  <!-- <div class="selectedCategory">
-    @if(categoryName === 'vote'){
-    <createvote-component
-      (addItemEvent)="implementChildData($event)"
-    ></createvote-component>
+      @else {
+        @if(item.type === 'image-true'){
+          <img class="createImage" src='{{item.data}}'/>
+        }@else {
+          <input type="file" class="file" (change)="getFile($event, item.key!)"/>
+        }
+      }
+      <button class="remove" (click)="removeText(item.key!)">
+        Удалить
+      </button>
     }
-  </div> -->
+  </div>
 
+  <div class="selectInput">
+    <button class="inputButton" (click)="addDataListInput('text', '')">Добавить текст</button>
+    <button class="inputButton" style="margin-left: 10px;" (click)="addDataListInput('image-false', '')">Добавить картинку</button>
+  </div>
+  
   <button id="buttonComponent" class="publish" (click)="create()">
     Опубликовать
   </button>

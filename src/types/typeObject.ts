@@ -6,7 +6,7 @@ export interface IItemsProprtyes {
     userID?: string, 
     title?: string, 
     description?: string,
-    text?: string, 
+    text?: TypeListInput[], 
     categoryName?: string, 
     category?: any;
     date?: string,
@@ -36,7 +36,7 @@ export type TypePostPublication = {
 
     title: string,
     description: string;
-    text: string;
+    text: TypeListInput[];
 
     categoryName: string;
     category?: {};
@@ -53,4 +53,10 @@ export type TypeVote = {
 export type TypeUserInfo = {
     name: string
     userID: string
+}
+
+export type TypeListInput = {
+    type?: string;
+    data?: string;
+    key?: number
 }

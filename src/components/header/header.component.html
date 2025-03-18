@@ -1,8 +1,5 @@
 <header class="header">
   <div class="searchPublications">
-    <!-- <button id="buttonComponent" (click)="isOpenWindow = !isOpenWindow">
-      Категории
-    </button> -->
     <modal-window [isOpen]="isOpenWindow">
       @for(item of categoriesName; track item.name){
       <button
@@ -23,6 +20,5 @@
       placeholder="Поиск . . ."
       [(ngModel)]="searchInput"
     />
-    <!-- <button id="buttonComponent" (click)="search()">Поиск</button> -->
   </div>
 </header>

@@ -3,9 +3,19 @@
 
     .body{   
         margin-top: 50px; 
-        p{
+
+        .text{
             margin-top: 20px;
             font-size: 20px;
+        }
+        .image{
+            width: 50%;
+            height: 50%;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+            border-radius: 5px;
         }
     }
     .comments-block{

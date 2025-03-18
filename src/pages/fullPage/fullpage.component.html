@@ -4,7 +4,14 @@
 
     <div class="body">
       <h1>{{ item.title }}</h1>
-      <p>{{ item.text }}</p>
+      
+      @for(text of item.text; track text.key){
+        @if(text.type === 'text'){
+          <p class="text">{{text.data}}</p>
+        }@else {
+          <img class="image" src="{{text.data}}"/>
+        }
+      }
     </div>
   
     <div class="comments-block">

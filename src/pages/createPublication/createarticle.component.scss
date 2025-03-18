@@ -1,9 +1,3 @@
-@media screen and (min-width: 900px) {
-    .createPublication{
-       
-    }
-}
-
 @mixin button {
     &:hover{
         border: solid 1px rgb(114, 114, 114)
@@ -20,7 +14,6 @@
     .publish{
         margin-top: 15px;
     }
-
     .input{
         padding: 10px;
         margin-top: 10px;
@@ -29,6 +22,12 @@
         border: solid 1px rgb(156, 156, 156);
 
         @include button
+    }
+    .select{
+        margin-top: 10px;
+    }
+    .file{
+        margin-top: 10px;
     }
 
     #inputDescription{
@@ -39,13 +38,51 @@
         resize: vertical;
         height: 200px;
     }
-
-    .select{
-        margin-top: 10px;
-    }
-
-
     .selectedCategory{
         margin-top: 20px;  
+    }
+
+    .selectInput{
+        margin-top: 10px;
+        width: 500px;
+
+        .inputButton{
+            padding: 5px;
+
+            background-color: transparent;
+
+            border-radius: 5px;
+            border: 1px solid black;
+
+            @include button
+        }
+    }
+
+    .createBody{
+        display: flex;
+        flex-direction: column;
+
+        .remove{
+            background-color: transparent;
+            border: none;
+            color: rgb(253, 119, 119);
+
+            margin-top: 5px;
+            text-align: end;
+
+            &:hover{
+                color: rgb(255, 35, 35);
+            }
+            &:active{
+                color: rgb(255, 0, 0);
+            }
+        }
+
+        .createImage{
+            margin-top: 20px;
+
+            width: 50%;
+            height: 50%;
+        }
     }
 }
