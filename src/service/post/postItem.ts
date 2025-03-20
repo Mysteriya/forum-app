@@ -27,7 +27,7 @@ export class ClassPostComment extends ClassPostItem {
 }
 
 export class ClassPostPublication extends ClassPostItem {
-    async postArticle(item: TypePostPublication){
+    async postPublication(item: TypePostPublication){
         return await fetch(this.API_SERVICE, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

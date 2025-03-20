@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms'
 import { ClassPostPublication } from "../../service/post/postItem";
 import { Router } from "@angular/router";
 import { TypeListInput } from "../../types/typeObject";
-import { getFileService } from "../../service/getFile";
 
 type TypeUserInfo = {
     name: string
@@ -50,7 +49,9 @@ class ClassCreatePublication {
             date: Date()
         }
 
-        await new ClassPostPublication().postArticle(item)
+        await new ClassPostPublication().postPublication(item)
+
+        this.router.navigate([`/publication/${item.publicationID}`])
     }
 
     chooseCategory(name:string){
